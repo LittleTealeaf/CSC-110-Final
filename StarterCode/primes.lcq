@@ -1,0 +1,33 @@
+; Just a simple program to test out basic functionality
+; Computes all primes in range 1-1000 using the Sieve of Eranthoses
+; Some useful constants
+LDI R5 0
+LDI R6 1
+LDI R7 -1000
+; First create the initial array of values 1 to 1000
+LDI R0 1
+LDI R1 1
+LABEL FILL
+STORE R0 R0
+ADD R0 R0 R1
+ADD R3 R0 R7
+BRN FILL
+; Now filter out primes
+LDI R0 2
+LABEL NEXTPRIME
+LDA R1 R0
+BRP PRIME
+ADD R0 R0 R6
+ADD R3 R0 R7
+BRN NEXTPRIME
+JMP END
+LABEL PRIME
+PRINT R0
+LABEL FILTER
+STORE R5 R1
+ADD R1 R1 R0
+ADD R3 R1 R7
+BRN FILTER
+JMP NEXTPRIME
+; End of the program
+LABEL END

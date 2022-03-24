@@ -1,0 +1,14 @@
+; This is just a simple program with a few comments
+; First print out the value 1
+LDI R0 1
+PRINT R0
+; Now double it by adding to itself (should print 2)
+ADD R0 R0 R0
+PRINT R0
+; And double again (should print 4)
+ADD R0 R0 R0
+PRINT R0
+; And let us square it too (should print 16 now)
+MULT R0 R0 R0
+PRINT R0
+; That is it...

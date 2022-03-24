@@ -1,0 +1,42 @@
+; Demo Program B
+; This one runs for a bit but then generates an error message
+
+; Fill in memory locations with squares of the numbers
+; R0 --- tracks the memory location (starting at 1000)
+; R1 --- is the decrement (-1)
+; R2 --- is R0*R0 will be what is stored in memory location
+LDI R0 1020
+LDI R1 -1
+LABEL FILLMEM
+MULT R2 R0 R0
+STORE R2 R0
+ADD R0 R0 R1
+BRP FILLMEM
+
+; Now load those values in one at a time and compute the sum
+LDI R0 1020
+LDI R1 -1
+LDI R2 0
+LABEL ADDEM
+LDA R3 R0
+ADD R2 R2 R3
+ADD R0 R0 R1
+BRP ADDEM
+
+; Print the sum: This should be: 354256370
+PRINT R2
+
+; Now print out the memory from 1015 on (crashes when hits 1024)
+LDI R0 1015
+LDI R1 1
+LABEL PRINTEM
+LDA R2 R0
+PRINT R2
+ADD R0 R0 R1
+BRP PRINTEM
+
+; This part should not be reached at all
+LDI R0 26
+PRINT R0
+
+; This is the end of the program

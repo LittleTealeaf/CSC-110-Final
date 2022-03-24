@@ -1,0 +1,22 @@
+; A program that prints out the binary representation (one digit per line) of R0 in reverse
+LDI R0 43
+LDI R1 1
+LDI R2 2
+LABEL CHECKBIT
+; Check the current bit
+AND R7 R0 R1
+BRZ PRINTZERO
+; Print a one
+LDI R7 1
+PRINT R7
+JMP CONTINUE
+LABEL PRINTZERO
+; Or print a zero
+LDI R7 0
+PRINT R7
+LABEL CONTINUE
+; Move the mask to the next bit
+MULT R1 R1 R2
+BRZ DONE
+JMP CHECKBIT
+LABEL DONE

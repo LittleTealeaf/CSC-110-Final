@@ -1,0 +1,31 @@
+; R0 = count
+; R1 = current position in memory
+; R2 = previous position in Memory
+; R4 = Current
+; R5 = previous
+; R6 = sum
+; R7 = -1 for count
+LDI R0 15
+LDI R1 0
+LDI R2 1
+LDI R3 0
+LDI R4 1
+STORE R4 R1
+LDI R4 0
+STORE R4 R2
+LDI R7 -1
+
+; Loop Start
+LABEL START
+; Pull values
+LDA R4 R1
+LDA R5 R2
+; Add Values
+ADD R6 R5 R4
+PRINT R6
+; Store new values
+STORE R5 R1
+STORE R6 R2
+; subtract count and Loop
+ADD R0 R0 R7
+BRP START

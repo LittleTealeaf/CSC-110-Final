@@ -1,0 +1,22 @@
+; Demo Program A
+; Initialize the registers
+LDI R0 5
+LDI R1 2
+LDI R2 3
+
+; Compute (R0+R1)*R2 and print result (21)
+ADD R3 R0 R1
+MULT R4 R3 R2
+PRINT R4
+
+; Count down by R2 from this value (make R2 = -R2)
+LDI R5 -1
+MULT R2 R2 R5
+
+; ADD R2 to R4, PRINT R4, and repeat if R4 is still positive
+LABEL COUNTDOWN
+ADD R4 R4 R2
+PRINT R4
+BRP COUNTDOWN
+
+; This is the end of the program
